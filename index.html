@@ -2144,9 +2144,12 @@
     }
   </script>
 <audio id="bg-music" src="Sahiba - Aditya Rikhari (320kbps) [apnamusic.com].mp3" loop></audio>
-<div id="music-player" class="music-widget" style="position:fixed;bottom:20px;right:20px;background:var(--canvas);padding:10px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);cursor:pointer;">
-  <button onclick="toggleMusic()" style="background:none;border:none;color:var(--contrast);font-size:1rem;">🎵 Music</button>
-  <span id="music-state-lbl" style="margin-left:8px;color:var(--rose);font-weight:600;">Paused</span>
-</div>
+<script>
+  document.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      bgMusic.play().catch(err => console.log('Autoplay blocked', err));
+    });
+  });
+</script>
 </body>
 </html>
