@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — For the Boy Who Became My Favorite Story</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="An interactive treasure map of our love story — Happy Birthday to my Pirate King.">
+  <meta name="author" content="Your Love">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* ----------------------------------
+       DESIGN SYSTEM & Warm Editorial Palette
+       ---------------------------------- */
+    :root {
+      --canvas:        #FAF6EF;   /* warm ivory paper */
+      --contrast:      #22243A;   /* midnight plum-navy */
+      --rose:          #C9484A;   /* dusty rose / red rose */
+      --gold:          #E8B84B;   /* honey gold spark */
+      --ink:           #3A2E2A;   /* espresso brown ink */
+      --white:         #ffffff;
+      
+      --font-display:  'Fraunces', 'Playfair Display', Georgia, serif;
+      --font-body:     'Outfit', 'Inter', system-ui, sans-serif;
+      --font-cursive:  'Caveat', cursive;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--canvas);
+    }
+
+    body {
+      background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('photos/image copy 12.png') center/cover no-repeat;
+      background-size: cover;
+      color: var(--ink);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.8;
+    }
+
+    /* Custom Selection Color */
+    ::selection {
+      background: var(--gold);
+      color: var(--contrast);
+    }
+
+    /* Elegant Editorial Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--canvas);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--contrast);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--rose);
+    }
+
+    /* ----------------------------------
+       TYPOGRAPHY
+       ---------------------------------- */
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 8.5vw, 6.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--contrast);
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 600;
+      color: var(--contrast);
+      line-height: 1.15;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--contrast);
+    }
+
+    p {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    em {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--rose);
+    }
+
+    section {
+      padding: 140px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----------------------------------
+       SIMPLE ELEGANT LOADER
+       ---------------------------------- */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--canvas);
+      z-index: 9999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .loader-content h2 {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--contrast);
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      animation: pulse-loader 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-loader {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+
+    /* ----------------------------------
+       HERO / LANDING SECTION
+       ---------------------------------- */
+    #hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 24px;
+  overflow: hidden;
+  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('photos/image copy 12.png') center/cover no-repeat;
+  background-size: cover;
+}
+
+    .hero-content {
+      max-width: 680px;
+      text-align: left;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      color: var(--rose);
+      letter-spacing: 5px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin-bottom: 2.5rem;
+    }
+
+    /* Astrolabe Relationship Dial */
+    .hero-duration-dial {
+      background: #FAF6EF;
+      border: 1px solid rgba(58, 46, 42, 0.12);
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: inline-flex;
+      gap: 24px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 12px 35px rgba(58, 46, 42, 0.04);
+    }
+
+    .dial-segment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dial-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--contrast);
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .dial-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .hero-desc {
+      color: var(--ink);
+      opacity: 0.85;
+      font-size: 1.15rem;
+      line-height: 1.9;
+    }
+
+    /* Asymmetric Hero Photo Stack */
+    .hero-photo-area {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo-wrapper {
+      position: absolute;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(58, 46, 42, 0.15);
+      border: 6px solid var(--white);
+      background: var(--white);
+      transition: transform 0.4s ease;
+    }
+
+    /* Desaturated Film Tone */
+    .hero-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.12) contrast(0.95) saturate(0.9);
+    }
+
+    .hero-photo-wrapper.primary {
+      width: 310px;
+      height: 410px;
+      left: 10px;
+      top: 10px;
+      transform: rotate(-3deg);
+      z-index: 1;
+    }
+
+    .hero-photo-wrapper.secondary {
+      width: 240px;
+      height: 310px;
+      right: 10px;
+      bottom: 20px;
+      transform: rotate(4deg);
+      z-index: 2;
+    }
+
+    .hero-handwritten-note {
+      position: absolute;
+      bottom: -15px;
+      right: 40px;
+      font-family: var(--font-cursive);
+      color: var(--rose);
+      font-size: 1.6rem;
+      transform: rotate(-2deg);
+      z-index: 3;
+    }
+
+    .hero-scroll-btn {
+      position: absolute;
+      bottom: 40px;
+      left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll-btn span {
+      color: var(--ink);
+      opacity: 0.6;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ----------------------------------
+       SECTION 2 — HOW IT BEGAN
+       ---------------------------------- */
+    .editorial-layout-began {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .began-text-col {
+      text-align: left;
+    }
+
+    .began-title {
+      margin-bottom: 2.2rem;
+    }
+
+    .began-body-p {
+      color: var(--ink);
+      font-size: 1.15rem;
+      line-height: 2;
+      margin-bottom: 3rem;
+    }
+
+    .began-stats-row {
+      display: flex;
+      gap: 48px;
+    }
+
+    .began-stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .began-stat-val {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--rose);
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .began-stat-lbl {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    .began-photo-col {
+      position: relative;
+    }
+
+    .began-photo-wrapper {
+      border: 8px solid var(--white);
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(58, 46, 42, 0.12);
+      transform: rotate(2.5deg);
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .began-photo-wrapper img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.12) contrast(0.95) saturate(0.9);
+    }
+
+    /* ----------------------------------
+       SECTION 3 — VOYAGE TIMELINE
+       ---------------------------------- */
+    .timeline-title-block {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .timeline-title-block p {
+      color: var(--rose);
+      font-family: var(--font-cursive);
+      font-size: 1.6rem;
+      margin-top: 10px;
+    }
+
+    .voyage-map {
+      position: relative;
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    .voyage-year-divider {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--contrast);
+      text-align: center;
+      margin: 5rem 0 3.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Voyage card styles - 4 layout variations */
+    .voyage-card {
+      position: relative;
+      margin-bottom: 9rem;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .voyage-card-body {
+      display: grid;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .voyage-pin {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--canvas);
+      border: 4px solid var(--pin-color, var(--rose));
+      z-index: 4;
+      top: 20px;
+      left: calc(50% - 10px);
+      box-shadow: 0 0 0 6px var(--canvas);
+    }
+
+    .voyage-info {
+      max-width: 460px;
+    }
+
+    .voyage-date {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--rose);
+      margin-bottom: 0.8rem;
+    }
+
+    .voyage-title {
+      margin-bottom: 1.2rem;
+      line-height: 1.25;
+    }
+
+    .voyage-note {
+      font-size: 1.05rem;
+      color: var(--ink);
+      opacity: 0.9;
+    }
+
+    .voyage-photo-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .voyage-img-wrapper {
+      border: 6px solid var(--white);
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(58, 46, 42, 0.12);
+      overflow: hidden;
+      display: inline-block;
+      position: relative;
+    }
+
+    .voyage-img-wrapper img {
+      max-width: 100%;
+      height: auto;
+      max-height: 330px;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.12) contrast(0.95) saturate(0.9);
+      transition: filter 0.3s;
+    }
+
+    .voyage-img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-8deg);
+      width: 75px;
+      height: 20px;
+      background: rgba(232, 184, 75, 0.25); /* tape effect */
+      border: 1px dashed rgba(0,0,0,0.04);
+      z-index: 2;
+    }
+
+    .voyage-handwritten-note {
+      font-family: var(--font-cursive);
+      color: var(--rose);
+      font-size: 1.45rem;
+      margin-top: 12px;
+      line-height: 1.2;
+    }
+
+    /* Layout 0: Left info, Right photo */
+    .voyage-card.layout-0 .voyage-card-body {
+      grid-template-columns: 1fr 1fr;
+      text-align: right;
+    }
+    .voyage-card.layout-0 .voyage-info {
+      justify-self: end;
+    }
+    .voyage-card.layout-0 .voyage-photo-container {
+      justify-self: start;
+      transform: rotate(2deg);
+    }
+    .voyage-card.layout-0 .voyage-handwritten-note {
+      text-align: left;
+    }
+
+    /* Layout 1: Left photo, Right info */
+    .voyage-card.layout-1 .voyage-card-body {
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+    }
+    .voyage-card.layout-1 .voyage-photo-container {
+      justify-self: end;
+      transform: rotate(-2.5deg);
+    }
+    .voyage-card.layout-1 .voyage-handwritten-note {
+      text-align: right;
+    }
+
+    /* Layout 2: Diagonal Stack overlapping photos */
+    .voyage-card.layout-2 .voyage-card-body {
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .voyage-card.layout-2 .voyage-photo-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      justify-self: center;
+    }
+    .voyage-card.layout-2 .voyage-img-wrapper {
+      position: absolute;
+      width: 250px;
+      z-index: 1;
+      left: 10px;
+      top: 10px;
+      transform: rotate(-3deg);
+    }
+    .voyage-card.layout-2 .secondary-overlapping {
+      position: absolute;
+      width: 180px;
+      z-index: 2;
+      right: 20px;
+      bottom: 20px;
+      transform: rotate(5deg);
+    }
+    .voyage-card.layout-2 .voyage-handwritten-note {
+      position: absolute;
+      bottom: -15px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    /* Layout 3: Quotes breathing moment */
+    .voyage-card.layout-3 .voyage-card-body {
+      grid-template-columns: 1fr;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .voyage-card.layout-3 .voyage-info {
+      max-width: 100%;
+    }
+    .voyage-card.layout-3 .voyage-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-style: italic;
+      color: var(--rose);
+      line-height: 1.5;
+    }
+
+    /* ----------------------------------
+       SECTION 4 — WHY YOUR BIRTHDAY MATTERS
+       ---------------------------------- */
+    #birthday-matters-section {
+      background-color: var(--contrast);
+      color: var(--canvas);
+      max-width: 100%;
+      padding: 140px 24px;
+    }
+
+    .matters-container {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .matters-title {
+      color: var(--gold);
+      letter-spacing: 5px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+
+    .matters-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      line-height: 1.55;
+      margin-bottom: 4rem;
+      font-weight: 400;
+      color: var(--white);
+      font-style: italic;
+    }
+
+    .matters-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .matters-stat-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 30px 20px;
+    }
+
+    .matters-stat-val {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--gold);
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .matters-stat-lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--canvas);
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    /* ----------------------------------
+       SECTION 6 — PARCHMENT LOVE LETTER
+       ---------------------------------- */
+    #letter-section {
+      max-width: 100%;
+      padding: 140px 24px;
+    }
+
+    .letter-title-tag {
+      text-align: center;
+      color: var(--rose);
+      letter-spacing: 5px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 4rem;
+      font-weight: 700;
+    }
+
+    .letter-envelope-container {
+      max-width: 700px;
+      margin: 0 auto;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    /* Closed Envelope Card */
+    .envelope-box-sealed {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid rgba(58, 46, 42, 0.1);
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(58, 46, 42, 0.05);
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .envelope-box-sealed:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(58, 46, 42, 0.08);
+    }
+
+    .wax-seal-btn {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 25px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      filter: drop-shadow(0 4px 10px rgba(58, 46, 42, 0.15));
+    }
+
+    .wax-seal-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .wax-seal-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .envelope-box-sealed h3 {
+      margin-bottom: 12px;
+    }
+
+    .envelope-box-sealed p {
+      color: var(--ink);
+      opacity: 0.65;
+      font-size: 0.95rem;
+    }
+
+    /* Unfolded Parchment Letter */
+    .letter-parchment {
+      width: 100%;
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 235, 180, 0.45) 0%, transparent 65%), #fdf8eb;
+      color: #3a2e2a;
+      border-radius: 8px;
+      padding: 65px 50px;
+      box-shadow: inset 0 0 60px rgba(139, 90, 43, 0.15), 0 20px 50px rgba(58, 46, 42, 0.1);
+      display: none;
+      transform: rotateX(-12deg) scale(0.94);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s;
+      transform-origin: top center;
+    }
+
+    .letter-parchment.opened {
+      display: block;
+      transform: rotateX(0deg) scale(1);
+      opacity: 1;
+    }
+
+    .parchment-fade-line {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .parchment-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+      margin-bottom: 2rem;
+      text-align: center;
+      line-height: 1.4;
+      color: var(--rose);
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .parchment-body {
+      font-family: var(--font-cursive);
+      font-size: clamp(1.4rem, 3.8vw, 1.85rem);
+      line-height: 1.85;
+      text-align: justify;
+      text-align-last: center;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    .parchment-sig {
+      margin-top: 3.5rem;
+      font-family: var(--font-cursive);
+      text-align: center;
+      font-size: 2rem;
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    /* ----------------------------------
+       SECTION 7 — CLOSING & TREASURE CHEST
+       ---------------------------------- */
+    #closing-section {
+      max-width: 100%;
+      padding: 0 24px 80px;
+    }
+
+    .closing-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border-radius: 36px;
+      text-align: center;
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 40px;
+      box-shadow: 0 15px 40px rgba(58, 46, 42, 0.03);
+      border: 1px solid rgba(58, 46, 42, 0.08);
+      position: relative;
+    }
+
+    .closing-content {
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Treasure Chest Widget */
+    .treasure-chest-box {
+      margin-bottom: 3.5rem;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 140px;
+      height: 120px;
+    }
+
+    .chest-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 12px rgba(58,46,42,0.15));
+      transition: transform 0.3s ease;
+    }
+
+    .treasure-chest-box:hover .chest-svg {
+      transform: scale(1.05) translateY(-3px);
+    }
+
+    .chest-lid {
+      transform-origin: bottom center;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .treasure-chest-box.open-chest .chest-lid {
+      transform: translateY(-10px) rotateX(-50deg) scaleY(0.8);
+    }
+
+    .chest-instruction {
+      margin-top: 15px;
+      color: var(--rose);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .treasure-chest-box:hover .chest-instruction {
+      opacity: 1;
+    }
+
+    .secret-scroll-message {
+      font-family: var(--font-cursive);
+      font-size: 2rem;
+      color: var(--rose);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s, transform 0.8s;
+      margin-top: 15px;
+      display: none;
+      max-width: 480px;
+      font-weight: 700;
+    }
+
+    .secret-scroll-message.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .closing-sub {
+      color: var(--rose);
+      letter-spacing: 5px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    .closing-title {
+      margin-bottom: 2.2rem;
+      line-height: 1.2;
+    }
+
+    .closing-text {
+      color: var(--ink);
+      opacity: 0.8;
+      line-height: 1.9;
+      font-size: 1.15rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Straw Hat easter egg button floating */
+    .straw-hat-egg {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      z-index: 1000;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      background: var(--white);
+      border: 1px solid rgba(58, 46, 42, 0.12);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      box-shadow: 0 8px 25px rgba(58, 46, 42, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      user-select: none;
+    }
+
+    .straw-hat-egg:hover {
+      transform: translateY(-4px) scale(1.1);
+      background: var(--canvas);
+    }
+
+    /* Floating hidden overlay note */
+    #egg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(34, 36, 58, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #egg-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .egg-dialog {
+      background: var(--canvas);
+      border-radius: 20px;
+      padding: 45px 30px;
+      max-width: 450px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      border: 1px solid rgba(58, 46, 42, 0.12);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    #egg-overlay.active .egg-dialog {
+      transform: scale(1);
+    }
+
+    .egg-dialog h3 {
+      color: var(--contrast);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .egg-dialog p {
+      color: var(--ink);
+      font-family: var(--font-cursive);
+      font-size: 1.7rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .egg-dialog button {
+      background: var(--contrast);
+      color: var(--canvas);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .egg-dialog button:hover {
+      background-color: var(--rose);
+    }
+
+    /* ----------------------------------
+       FLOATING MUSIC CONTROLS (Flat Editorial Style)
+       ---------------------------------- */
+    #music-player {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 10px 14px;
+      border: 1px solid rgba(58, 46, 42, 0.12);
+      box-shadow: 0 8px 25px rgba(58, 46, 42, 0.04);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .music-jacket {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--canvas);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      animation: spin-vinyl 6s linear infinite paused;
+    }
+
+    .playing .music-jacket {
+      animation-play-state: running;
+    }
+
+    .music-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .music-title-text {
+      color: var(--contrast);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .music-state-text {
+      color: var(--rose);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    @keyframes spin-vinyl {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ----------------------------------
+       MOBILE RESPONSIVENESS
+       ---------------------------------- */
+    @media (max-width: 800px) {
+      #hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 120px;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero-photo-area {
+        height: 380px;
+      }
+      .hero-scroll-btn {
+        display: none;
+      }
+      .editorial-layout-began {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .began-photo-wrapper img {
+        height: 280px;
+      }
+      .voyage-card-body {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+      }
+      .voyage-info {
+        max-width: 100% !important;
+        justify-self: center !important;
+      }
+      .voyage-photo-container {
+        justify-self: center !important;
+        transform: none !important;
+      }
+      .voyage-handwritten-note {
+        text-align: center !important;
+      }
+      .voyage-card.layout-2 .voyage-photo-container {
+        height: 320px;
+      }
+      .voyage-card.layout-2 .voyage-img-wrapper {
+        width: 190px;
+      }
+      .voyage-card.layout-2 .secondary-overlapping {
+        width: 130px;
+      }
+      .matters-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .envelope-box-sealed {
+        padding: 40px 20px;
+      }
+      .letter-parchment {
+        padding: 35px 20px;
+      }
+      .parchment-body {
+        font-size: 1.35rem;
+        line-height: 1.8;
+      }
+      .closing-container {
+        padding: 55px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMPLE ELEGANT LOADER -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <h2 id="loader-txt">Our Story</h2>
+    </div>
+  </div>
+
+  <!-- FLOATING MUSIC PLAYER (Flat Editorial Style) -->
+  <div id="music-player" onclick="toggleMusic()">
+    <div class="music-jacket">🎶</div>
+    <div class="music-details">
+      <span class="music-title-text">Our Song</span>
+      <span class="music-state-text" id="music-state-lbl">Paused</span>
+    </div>
+    <audio id="bg-music" loop>
+      <source src="assets/song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- FLOATING STRAW HAT EASTER EGG -->
+  <div class="straw-hat-egg" title="Click me!" onclick="openEggOverlay()">👒</div>
+
+  <!-- EASTER EGG FLOATING DIALOG OVERLAY -->
+  <div id="egg-overlay">
+    <div class="egg-dialog">
+      <h3>Hey, Adventure Partner! 👑</h3>
+      <p>"I'm gonna be the Pirate King of your heart... always & forever!"</p>
+      <button onclick="closeEggOverlay()">Close</button>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- SECTION 1 — HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-sub">The story of us</p>
+      <h1 class="hero-title">
+        For the one who became my<br>
+        <em>favorite story</em>
+      </h1>
+      
+      <!-- live counter -->
+      <div class="hero-duration-dial" id="duration-dial">
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-years">00</span>
+          <span class="dial-label">Years</span>
+        </div>
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-months">00</span>
+          <span class="dial-label">Months</span>
+        </div>
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-days">00</span>
+          <span class="dial-label">Days</span>
+        </div>
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-hours">00</span>
+          <span class="dial-label">Hours</span>
+        </div>
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-mins">00</span>
+          <span class="dial-label">Mins</span>
+        </div>
+        <div class="dial-segment">
+          <span class="dial-num" id="dur-secs">00</span>
+          <span class="dial-label">Secs</span>
+        </div>
+      </div>
+
+      <p class="hero-desc">
+        Every great adventure has a beginning. Ours started on a day that felt perfectly ordinary—until it became the first page of our favorite book.
+      </p>
+    </div>
+
+    <div class="hero-photo-area">
+      <div class="hero-photo-wrapper primary">
+        <img src="photos/hero.png" alt="Our story">
+      </div>
+      <div class="hero-photo-wrapper secondary">
+        <img src="photos/image copy 7.png" alt="Happy memory">
+      </div>
+      <div class="hero-handwritten-note">2 Sept 2024 — where it all began ✨</div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#began-section" class="hero-scroll-btn">
+      <span>Begin Voyage ↓</span>
+    </a>
+  </section>
+
+  <!-- SECTION 2 — HOW IT BEGAN -->
+  <section id="began-section" class="reveal">
+    <div class="editorial-layout-began">
+      <div class="began-text-col">
+        <h2 class="began-title">How It All Began</h2>
+        <p class="began-body-p">
+          It started with quiet conversations, shared laughs over anime, and getting to know each other. 
+          A year of friendship grew quietly into a bond that couldn't be broken. Before we knew it, 
+          we had stepped onto a journey that felt like our very own grand adventure.
+        </p>
+        <div class="began-stats-row">
+          <div class="began-stat-item">
+            <span class="began-stat-val">2 Sep 2024</span>
+            <span class="began-stat-lbl">The Day We Met</span>
+          </div>
+          <div class="began-stat-item">
+            <span class="began-stat-val">11 Sep 2024</span>
+            <span class="began-stat-lbl">First Real Link</span>
+          </div>
+        </div>
+      </div>
+      <div class="began-photo-col">
+        <div class="began-photo-wrapper">
+          <img src="photos/image.png" alt="Where it began">
+        </div>
+        <div class="hero-handwritten-note" style="position: absolute; bottom: -20px; left: 10px; transform: rotate(-3deg);">
+          Tu mila, toh sab theek lagne laga... 💛
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — INTERACTIVE VOYAGE TIMELINE -->
+  <section id="timeline-section">
+    <div class="timeline-title-block">
+      <h2 class="reveal">Our Voyage Route</h2>
+      <p class="reveal">A hand-drawn map of our favorite chapters</p>
+    </div>
+
+    <div class="voyage-map">
+      <!-- SVG Canvas for the Napkin Journey Line -->
+      <svg id="timeline-path-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+        <path id="timeline-path" d="" fill="none" stroke="var(--rose)" stroke-width="3.5" stroke-dasharray="10 8" opacity="0.65" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div id="voyage-timeline"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — WHY YOUR BIRTHDAY MATTERS -->
+  <section id="birthday-matters-section">
+    <div class="matters-container">
+      <p class="matters-title">Why Your Birthday Matters</p>
+      <h2 class="matters-quote reveal">
+        "Your birthday isn't just your day anymore — it's the quiet anniversary of when everything in my life started making sense. A little while after your birthday, 'we' began. So every year, when the world celebrates the day you were born, I'll be celebrating the day my favorite story started."
+      </h2>
+      <div class="matters-stats-grid">
+        <div class="matters-stat-card reveal">
+          <div class="matters-stat-val">~1.5</div>
+          <div class="matters-stat-lbl">Years as Friends</div>
+        </div>
+        <div class="matters-stat-card reveal">
+          <div class="matters-stat-val">~1</div>
+          <div class="matters-stat-lbl">Year as a Couple</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — PARCHMENT LOVE LETTER -->
+  <section id="letter-section" style="background: linear-gradient(rgba(34, 36, 58, 0.75), rgba(34, 36, 58, 0.75)), url('photos/hero.png') center/cover no-repeat fixed;">
+    <p class="letter-title-tag" style="color: var(--canvas);">A Letter For You</p>
+    <div class="letter-envelope-container">
+      <!-- Sealed Envelope -->
+      <div class="envelope-box-sealed" id="sealed-cover" onclick="revealParchment()">
+        <div class="wax-seal-btn">
+          <svg class="wax-seal-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#c62828" stroke="#8e0000" stroke-width="3"/>
+            <polygon points="50,28 64,55 36,55" fill="#ffd23f" />
+            <polygon points="50,72 36,45 64,45" fill="#ffd23f" />
+            <circle cx="50" cy="50" r="6" fill="#1b2a4a"/>
+          </svg>
+        </div>
+        <h3>Our Secret Letter</h3>
+        <p>Break the wax seal to read</p>
+      </div>
+
+      <!-- Unfolded Parchment Letter -->
+      <div class="letter-parchment" id="letter-paper" onmousemove="glowCandle(event)" onmouseleave="resetGlow()">
+        <h2 class="parchment-quote">
+          "Happy Birthday, my Pirate King. Here's to the next adventure."
+        </h2>
+        <div class="parchment-body">
+          <p>
+            Happiest birthday mera bacha mera gudda my everything
+          </p>
+          <br>
+          <p>
+            I want to confess something baby you know what jab train se ja rhi ek dun shanti thi ese yaad aa rhi thi tumhare that time I realize ki yaar maiii bilkul bhi nhi rah sakti tumhare bina uss time bss esa lag rha th jald se jald hum dono sath hoo......
+          </p>
+          <br>
+          <p>
+            Or baby I never imagined ki ki mujh jaise ldki jisko songs me bilkul intrest nhi haiii woh ek ldke k liye song sunege sachi uss din train me jab song lgaya na ek ek word hit kar raha tha sachiiii
+          </p>
+          <br>
+          <p>
+            I love you soo much ab toh yeh words bhi kam lgte haii etna jyada wala pyaar hogya haii tumse❤️
+          </p>
+        </div>
+        <p class="parchment-sig">Yours, always — 💛</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — CLOSING & TREASURE CHEST -->
+  <section id="closing-section" class="reveal">
+    <div class="closing-container">
+      <div class="closing-content">
+        <p class="closing-sub">To be continued...</p>
+        
+        <!-- Interactive Treasure Chest -->
+        <div class="treasure-chest-box" id="treasure-chest" onclick="openTreasureChest(event)">
+          <svg class="chest-svg" viewBox="0 0 100 100">
+            <!-- Chest Body -->
+            <rect x="15" y="45" width="70" height="40" rx="4" fill="#8d6e63" stroke="#4e342e" stroke-width="3"/>
+            <rect x="25" y="45" width="8" height="40" fill="#5d4037" />
+            <rect x="67" y="45" width="8" height="40" fill="#5d4037" />
+            <!-- Lid -->
+            <path class="chest-lid" d="M15,45 C15,25 85,25 85,45 Z" fill="#a1887f" stroke="#4e342e" stroke-width="3"/>
+            <path class="chest-lid" d="M25,27 C35,27 35,45 25,45 Z" fill="#8d6e63" />
+            <path class="chest-lid" d="M67,27 C77,27 77,45 67,45 Z" fill="#8d6e63" />
+            <!-- Lock Dial -->
+            <circle cx="50" cy="48" r="7" fill="#ffd23f" stroke="#e8b84b" stroke-width="1"/>
+            <rect x="47" y="48" width="6" height="12" fill="#ffd23f"/>
+          </svg>
+          <span class="chest-instruction" id="chest-tip">Tap Chest to Open</span>
+        </div>
+
+        <h1 class="closing-title">
+          Happy Birthday,<br>
+          <em>My Love</em> 🎂
+        </h1>
+        <p class="closing-text">
+          "Yeh pal, hamesha ke liye."
+          <br><br>
+          Here's to every chapter still unwritten. Here's to us.
+        </p>
+
+        <!-- Final Secret Love Scroll message -->
+        <div class="secret-scroll-message" id="scroll-note">
+          "You are my greatest treasure. Happy Birthday! 💛"
+        </div>
+      </div>
+      
+      <!-- Final Portrait Polaroid -->
+      <div style="margin-top: 40px; max-width: 320px; transform: rotate(1.5deg);" class="voyage-img-wrapper" onclick="openLightbox('photos/image copy 3.png', 'To many more chapters together 🥂', 'Recent Voyage')">
+        <img src="photos/image copy 3.png" alt="Us" style="max-height: 300px; cursor: pointer;">
+      </div>
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* ----------------------------------
+       CONFIG SETTINGS
+       ---------------------------------- */
+    const CONFIG = {
+      boyfriendName: "My Love",
+      anniversaryDate: "2024-09-02T00:00:00" // Relationship start date
+    };
+
+    /* ----------------------------------
+       TIMELINE MEMORIES (Alternating Scrapbook Layouts)
+       ---------------------------------- */
+    const TIMELINE_DATA = [
+      {
+        date: "20 January 2024",
+        title: "🎁 First Gift",
+        note: "You gave it after being late — Yaren's gift. Your first little apology wrapped in sweetness.",
+        cursiveNote: "Tujhe dekha toh ye jaana sanam... 🙈",
+        pin: "🎁",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.33 PM.jpeg",
+        layout: "layout-0"
+      },
+      {
+        date: "24 August 2024",
+        title: "📱 First Video Call",
+        note: "Seeing your face for the first time through the screen. We counted every single second.",
+        cursiveNote: "Yeh pal, hamesha ke liye. ✨",
+        pin: "📱",
+        color: "var(--gold)",
+        image: "photos/image copy 10.png",
+        layout: "layout-1"
+      },
+      {
+        date: "28 August 2024",
+        title: "💌 First Story as Lover",
+        note: "The first time the word 'lover' felt real. The world got to see a small glimpse of us.",
+        cursiveNote: "Bas itna samajh — tu hi hai woh. ❤️",
+        pin: "💌",
+        color: "var(--rose)",
+        image: "photos/image copy 12.png",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 4.png"
+      },
+      {
+        date: "2 September 2024",
+        title: "⚓ The Day We Met",
+        note: "This is where it all started — the beginning of everything. Your birthday is a symbol of us.",
+        cursiveNote: "Tu mila, toh sab theek lagne laga. 💛",
+        pin: "⚓",
+        color: "var(--gold)",
+        image: "photos/image.png",
+        layout: "layout-0"
+      },
+      {
+        date: "11 September 2024",
+        title: "👀 He Sees You for the First Time",
+        note: "The first time you really saw me — and everything changed after that.",
+        cursiveNote: "Haye, nazar na lage... 🧿",
+        pin: "👀",
+        color: "var(--rose)",
+        image: "photos/image copy.png",
+        layout: "layout-1"
+      },
+      {
+        date: "Autumn 2024",
+        title: "\"You are the anchor that keeps me steady when the wind blows, and the spark that lights up my darkest skies.\"",
+        note: "",
+        cursiveNote: "",
+        pin: "✨",
+        color: "var(--rose)",
+        image: "",
+        layout: "layout-3"
+      },
+      {
+        date: "5 June 2025",
+        title: "⌚ You Gifted Him a Watch + RCB Wins!",
+        note: "I gave you time, the universe gave us a win, and we made three perfect wishes together.",
+        cursiveNote: "Three wishes for our forever journey 💫",
+        pin: "⌚",
+        color: "var(--gold)",
+        image: "photos/image copy 7.png",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 12.png"
+      },
+      {
+        date: "14 June 2025",
+        title: "🎂 His Birthday",
+        note: "Your special day. Celebrated with all the love and warmth we could share.",
+        cursiveNote: "Janamdin mubarak, my favorite pirate king! 👑",
+        pin: "🎂",
+        color: "var(--gold)",
+        image: "photos/image copy 7.png",
+        layout: "layout-0"
+      },
+      {
+        date: "19 June 2025",
+        title: "💍 He Proposed",
+        note: "Real Hai, Real Hai! The moment he asked, and my whole world said yes.",
+        cursiveNote: "Real Hai! My heart said yes instantly 💍",
+        pin: "💍",
+        color: "var(--rose)",
+        image: "photos/image copy 3.png",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 5.png"
+      },
+      {
+        date: "25 June 2025",
+        title: "🥂 We Became a Couple",
+        note: "Officially us. No looking back, just moving forward together into the adventure.",
+        cursiveNote: "Our official chapter began here. 🥂",
+        pin: "🥂",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.34 PM.jpeg",
+        layout: "layout-1"
+      },
+      {
+        date: "8 September 2025",
+        title: "🌹 First Date — Red Rose in the Rain",
+        note: "He gifted a Mia red rose. It was raining, it was cinematic, and it was absolutely perfect.",
+        cursiveNote: "Cinema jaisa ishq, barish aur tum... 🌧️🌹",
+        pin: "🌹",
+        color: "var(--rose)",
+        image: "photos/image copy 2.png",
+        layout: "layout-0"
+      },
+      {
+        date: "11 September 2025",
+        title: "💍 First Earrings",
+        note: "The first piece of jewelry from him. A small gift, but a giant feeling.",
+        cursiveNote: "A tiny shine from you that I cherish always ✨",
+        pin: "💍",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.33 PM (1).jpeg",
+        layout: "layout-1"
+      },
+      {
+        date: "19 September 2025",
+        title: "🎙️ The 39-Minute Audio",
+        note: "His longest audio message ever — 39 whole minutes of his voice just for me.",
+        cursiveNote: "39 minutes of pure love in my ears 🎧",
+        pin: "🎙️",
+        color: "var(--rose)",
+        image: "photos/image copy 11.png",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 9.png"
+      },
+      {
+        date: "Late Summer 2025",
+        title: "\"Some chapters of our story don't need words—they are written in the quiet spaces between your hand in mine.\"",
+        note: "",
+        cursiveNote: "",
+        pin: "✨",
+        color: "var(--gold)",
+        image: "",
+        layout: "layout-3"
+      },
+      {
+        date: "28 September 2025",
+        title: "🎊 First Couple Photo — Dandiya Event",
+        note: "Dressed up, twirling into a new chapter together. Our first official photo as a couple.",
+        cursiveNote: "Hamari pehli pyaari photo... 💃🕺",
+        pin: "🎊",
+        color: "var(--gold)",
+        image: "photos/image copy 6.png",
+        layout: "layout-0"
+      },
+      {
+        date: "October 2025",
+        title: "🎽 You Gifted Him a T-Shirt",
+        note: "He wore it and matched it perfectly. Looked good, because he always does.",
+        cursiveNote: "Matching outfits, matching souls 👕",
+        pin: "🎽",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.32 PM.jpeg",
+        layout: "layout-1"
+      },
+      {
+        date: "17 October 2025",
+        title: "🪔 Diwali Party",
+        note: "Lights everywhere, but you were easily the brightest, warmest thing in the room.",
+        cursiveNote: "Tum hi toh hamari roshni ho. 🪔",
+        pin: "🪔",
+        color: "var(--gold)",
+        image: "photos/image copy 8.png",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 9.png"
+      },
+      {
+        date: "29 October 2025",
+        title: "💋 First Kiss",
+        note: "The moment everything went quiet, and then everything made sense.",
+        cursiveNote: "The universe stopped for a second 🤍",
+        pin: "💋",
+        color: "var(--rose)",
+        image: "photos/image copy 6.png",
+        layout: "layout-0"
+      },
+      {
+        date: "30 October 2025",
+        title: "🤍 He Gave You a White Rose",
+        note: "A new color, a new promise. Soft, gentle, and just like him.",
+        cursiveNote: "You gave me a white rose first time. 🤍",
+        pin: "🤍",
+        color: "var(--rose)",
+        image: "photos/image copy 2.png",
+        layout: "layout-1"
+      },
+      {
+        date: "18 November 2025",
+        title: "🤝 No Drink Agreement",
+        note: "A serious, quiet promise made together. A moment of true trust.",
+        cursiveNote: "Ek pyaara aur saccha wada. 🤝",
+        pin: "🤝",
+        color: "var(--rose)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.35 PM.jpeg",
+        layout: "layout-0"
+      },
+      {
+        date: "26 November 2025",
+        title: "📢 We Went Public",
+        note: "No more secrets — just us, for everyone to see that this is real.",
+        cursiveNote: "Bina kahe sab samajh jaana... 📢",
+        pin: "📢",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.37 PM.jpeg",
+        layout: "layout-2",
+        secondaryImage: "photos/image copy 9.png"
+      },
+      {
+        date: "December 2025",
+        title: "🍬 He Gave You a Lot of Toffees",
+        note: "Small, sweet, silly. The most 'him' thing he could possibly do.",
+        cursiveNote: "You gave me a lot of toffees, I love my toffee 🍬",
+        pin: "🍬",
+        color: "var(--rose)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.33 PM (2).jpeg",
+        layout: "layout-1"
+      },
+      {
+        date: "15 December 2025",
+        title: "📸 First Photo on the New Phone",
+        note: "A new frame, but the same us — captured forever on the very first shot.",
+        cursiveNote: "Naya phone, vahi hum, vahi pyaari smile 📸",
+        pin: "📸",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.36 PM.jpeg",
+        layout: "layout-0"
+      },
+      {
+        date: "30 December 2025",
+        title: "🍪 He Gave You Biscoff",
+        note: "Ending the year with something sweet. He remembered. He always remembers.",
+        cursiveNote: "Mithe mithe lamhe, Biscoff ke saath 🍪",
+        pin: "🍪",
+        color: "var(--gold)",
+        image: "photos/WhatsApp Image 2026-06-13 at 6.14.38 PM.jpeg",
+        layout: "layout-1"
+      },
+      {
+        date: "5 January 2026",
+        title: "💄 Cleature Lip Balm",
+        note: "Starting the new year with tiny gifts that show endless attention.",
+        cursiveNote: "Ending and starting years in your arms 💛",
+        pin: "💄",
+        color: "var(--rose)",
+        image: "photos/image copy 5.png",
+        layout: "layout-0"
+      }
+    ];
+
+    /* ----------------------------------
+       INITIALIZATION
+       ---------------------------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Run elegant typewriter loading screen
+      runLoadingScreen();
+
+      // 2. Render Asymmetric Scrapbook Timeline
+      renderTimeline();
+
+      // Observe reveal elements
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      // Calculate SVG Napkin Line path after initial layout
+      setTimeout(() => {
+        updateTimelinePath();
+        
+        // Listen to image load events to recalculate layout paths accurately
+        document.querySelectorAll('.voyage-img-wrapper img').forEach(img => {
+          img.addEventListener('load', updateTimelinePath);
+        });
+      }, 300);
+    });
+
+    window.addEventListener('load', () => {
+      setTimeout(updateTimelinePath, 500);
+    });
+
+    window.addEventListener('resize', updateTimelinePath);
+
+    /* ----------------------------------
+       CINEMATIC LOADER
+       ---------------------------------- */
+    function runLoadingScreen() {
+      const loader = document.getElementById('loading-screen');
+      const txt = document.getElementById('loader-txt');
+      const phrases = [
+        "Opening our scrapbook...",
+        "Gathering precious moments...",
+        "Drawing the journey map...",
+        "For the one who became my favorite story..."
+      ];
+      let pIdx = 0;
+      txt.style.transition = "opacity 0.6s";
+      
+      const cycleText = setInterval(() => {
+        txt.style.opacity = '0';
+        setTimeout(() => {
+          pIdx++;
+          if (pIdx < phrases.length) {
+            txt.textContent = phrases[pIdx];
+            txt.style.opacity = '1';
+          } else {
+            clearInterval(cycleText);
+            txt.textContent = "Our Story";
+            txt.style.opacity = '1';
+            
+            // Fade out loading screen
+            setTimeout(() => {
+              loader.style.opacity = '0';
+              loader.style.pointerEvents = 'none';
+              setTimeout(() => {
+                loader.style.display = 'none';
+                updateTimelinePath();
+              }, 800);
+            }, 600);
+          }
+        }, 600);
+      }, 1500);
+    }
+
+    /* ----------------------------------
+       LIVE TIME COUNTER
+       ---------------------------------- */
+    function initRelationshipTicker() {
+      const start = new Date(CONFIG.anniversaryDate);
+
+      function update() {
+        const now = new Date();
+        const diff = now - start;
+
+        if (diff < 0) return;
+
+        let years = now.getFullYear() - start.getFullYear();
+        let months = now.getMonth() - start.getMonth();
+        let days = now.getDate() - start.getDate();
+
+        if (days < 0) {
+          let prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+          days += prevMonth.getDate();
+          months--;
+        }
+        if (months < 0) {
+          months += 12;
+          years--;
+        }
+
+        let hours = now.getHours() - start.getHours();
+        let minutes = now.getMinutes() - start.getMinutes();
+        let seconds = now.getSeconds() - start.getSeconds();
+
+        if (seconds < 0) {
+          seconds += 60;
+          minutes--;
+        }
+        if (minutes < 0) {
+          minutes += 60;
+          hours--;
+        }
+        if (hours < 0) {
+          hours += 24;
+          days--;
+        }
+
+        if (days < 0) {
+          let prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 0);
+          days += prevMonth.getDate();
+          months--;
+          if (months < 0) {
+            months += 12;
+            years--;
+          }
+        }
+
+        document.getElementById('dur-years').textContent = years;
+        document.getElementById('dur-months').textContent = months;
+        document.getElementById('dur-days').textContent = days;
+        document.getElementById('dur-hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('dur-mins').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('dur-secs').textContent = seconds.toString().padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+    initRelationshipTicker();
+
+    /* ----------------------------------
+       TIMELINE GENERATOR (Asymmetric Layouts 0-3)
+       ---------------------------------- */
+    function renderTimeline() {
+      const timeline = document.getElementById('voyage-timeline');
+      let currentYear = "";
+
+      // Sort chronological
+      const sortedData = [...TIMELINE_DATA].sort((a, b) => {
+        return new Date(a.date.replace('*', '')) - new Date(b.date.replace('*', ''));
+      });
+
+      sortedData.forEach((entry, idx) => {
+        // Infer year
+        const dateParts = entry.date.split(' ');
+        const year = dateParts[dateParts.length - 1].replace('*', '');
+
+        if (year !== currentYear && isNaN(year) === false) {
+          currentYear = year;
+          const divider = document.createElement('div');
+          divider.className = 'voyage-year-divider';
+          divider.textContent = `${currentYear} — Voyage Log`;
+          timeline.appendChild(divider);
+        }
+
+        const card = document.createElement('div');
+        card.className = `voyage-card reveal ${entry.layout}`;
+        
+        // Pin icon
+        const pin = document.createElement('div');
+        pin.className = 'voyage-pin';
+        pin.style.setProperty('--pin-color', entry.color);
+        pin.textContent = entry.pin;
+        card.appendChild(pin);
+
+        const bodyWrapper = document.createElement('div');
+        bodyWrapper.className = 'voyage-card-body';
+
+        if (entry.layout === 'layout-0') {
+          // Layout 0: Left text info, Right photo
+          bodyWrapper.innerHTML = `
+            <div class="voyage-info">
+              <div class="voyage-date">${entry.date}</div>
+              <h3 class="voyage-title">${entry.title}</h3>
+              <p class="voyage-note">${entry.note}</p>
+            </div>
+            <div class="voyage-photo-container">
+              <div class="voyage-img-wrapper" onclick="openLightbox('${entry.image}', '${entry.title}', '${entry.date}')">
+                <img src="${entry.image}" alt="${entry.title}" onerror="handleImageError(this, '${entry.pin}')">
+              </div>
+              <div class="voyage-handwritten-note">${entry.cursiveNote}</div>
+            </div>
+          `;
+        } else if (entry.layout === 'layout-1') {
+          // Layout 1: Left photo, Right text info
+          bodyWrapper.innerHTML = `
+            <div class="voyage-photo-container">
+              <div class="voyage-img-wrapper" onclick="openLightbox('${entry.image}', '${entry.title}', '${entry.date}')">
+                <img src="${entry.image}" alt="${entry.title}" onerror="handleImageError(this, '${entry.pin}')">
+              </div>
+              <div class="voyage-handwritten-note">${entry.cursiveNote}</div>
+            </div>
+            <div class="voyage-info">
+              <div class="voyage-date">${entry.date}</div>
+              <h3 class="voyage-title">${entry.title}</h3>
+              <p class="voyage-note">${entry.note}</p>
+            </div>
+          `;
+        } else if (entry.layout === 'layout-2') {
+          // Layout 2: Left text info, Right diagonal stack overlapping photos
+          bodyWrapper.innerHTML = `
+            <div class="voyage-info">
+              <div class="voyage-date">${entry.date}</div>
+              <h3 class="voyage-title">${entry.title}</h3>
+              <p class="voyage-note">${entry.note}</p>
+            </div>
+            <div class="voyage-photo-container">
+              <div class="voyage-img-wrapper" onclick="openLightbox('${entry.image}', '${entry.title}', '${entry.date}')">
+                <img src="${entry.image}" alt="${entry.title}" onerror="handleImageError(this, '${entry.pin}')">
+              </div>
+              <div class="voyage-img-wrapper secondary-overlapping" onclick="openLightbox('${entry.secondaryImage}', '${entry.title}', '${entry.date}')">
+                <img src="${entry.secondaryImage}" alt="${entry.title}" onerror="handleImageError(this, '📸')">
+              </div>
+              <div class="voyage-handwritten-note">${entry.cursiveNote}</div>
+            </div>
+          `;
+        } else if (entry.layout === 'layout-3') {
+          // Layout 3: Quotes breathing moment
+          bodyWrapper.innerHTML = `
+            <div class="voyage-info">
+              <div class="voyage-date">${entry.date}</div>
+              <h3 class="voyage-title">${entry.title}</h3>
+            </div>
+          `;
+        }
+
+        card.appendChild(bodyWrapper);
+        timeline.appendChild(card);
+      });
+    }
+
+    function handleImageError(img, fallbackEmoji) {
+      img.style.display = 'none';
+      const wrapper = img.parentElement;
+      wrapper.style.minHeight = "200px";
+      wrapper.style.display = "flex";
+      wrapper.style.flexDirection = "column";
+      wrapper.style.alignItems = "center";
+      wrapper.style.justifyContent = "center";
+      wrapper.style.background = "rgba(244, 238, 225, 0.6)";
+      wrapper.style.border = "1px dashed rgba(58, 46, 42, 0.15)";
+      
+      const emojiSpan = document.createElement('span');
+      emojiSpan.style.fontSize = "2rem";
+      emojiSpan.textContent = fallbackEmoji || '📸';
+      
+      const label = document.createElement('p');
+      label.style.fontSize = "0.75rem";
+      label.style.marginTop = "8px";
+      label.style.fontFamily = "var(--font-cursive)";
+      label.textContent = "A sweet memory... 💛";
+      
+      wrapper.appendChild(emojiSpan);
+      wrapper.appendChild(label);
+    }
+
+    /* ----------------------------------
+       DYNAMIC SVG BEZIER SPLINE DRAWING
+       ---------------------------------- */
+    function updateTimelinePath() {
+      const svg = document.getElementById('timeline-path-svg');
+      const path = document.getElementById('timeline-path');
+      const map = document.querySelector('.voyage-map');
+      if (!svg || !path || !map) return;
+
+      const mapRect = map.getBoundingClientRect();
+      const cards = document.querySelectorAll('.voyage-card');
+      if (cards.length === 0) return;
+
+      let d = "";
+      let prevX, prevY;
+
+      cards.forEach((card, idx) => {
+        const rect = card.getBoundingClientRect();
+        const x = mapRect.width / 2; // Center alignment coordinates
+        const y = rect.top - mapRect.top + 30; // Pin center offset (20px top + 10px half-height)
+
+        if (idx === 0) {
+          d += `M ${x} ${y}`;
+        } else {
+          const dy = y - prevY;
+          // Curve amplitude: alternate left and right sweeps
+          const bendDir = (idx % 2 === 0) ? 1 : -1;
+          const bendAmount = Math.min(mapRect.width * 0.16, 120);
+          
+          const cp1x = prevX + bendDir * bendAmount;
+          const cp1y = prevY + dy * 0.35;
+          const cp2x = x - bendDir * bendAmount;
+          const cp2y = y - dy * 0.35;
+          
+          d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x} ${y}`;
+        }
+        prevX = x;
+        prevY = y;
+      });
+
+      path.setAttribute('d', d);
+    }
+
+    /* ----------------------------------
+       MODAL LIGHTBOX LOGIC
+       ---------------------------------- */
+    function openLightbox(src, caption, date) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+
+      img.src = src;
+      cap.innerHTML = `"${caption}" <br><span style="font-size:0.9rem; color:var(--gold); font-family:var(--font-body); text-transform:uppercase; letter-spacing:1px; font-weight:600;">— ${date}</span>`;
+      
+      img.onerror = () => {
+        img.style.display = 'none';
+        cap.innerHTML = `[Image file missing]<br><br>"${caption}"`;
+      };
+      img.style.display = 'block';
+      modal.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      const modal = document.getElementById('lightbox');
+      if (e.target.id === 'lightbox' || e.target.className === 'lightbox-close') {
+        modal.classList.remove('active');
+      }
+    }
+
+    /* ----------------------------------
+       WAX SEAL PARCHMENT REVEAL
+       ---------------------------------- */
+    function revealParchment() {
+      const cover = document.getElementById('sealed-cover');
+      const paper = document.getElementById('letter-paper');
+      
+      cover.style.transition = "transform 0.6s, opacity 0.6s";
+      cover.style.transform = "translateY(-40px) rotateX(90deg)";
+      cover.style.opacity = "0";
+      
+      setTimeout(() => {
+        cover.style.display = 'none';
+        paper.classList.add('opened');
+        setTimeout(updateTimelinePath, 200);
+      }, 500);
+    }
+
+    function glowCandle(e) {
+      const paper = document.getElementById('letter-paper');
+      const rect = paper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      paper.style.setProperty('--glow-x', `${x}px`);
+      paper.style.setProperty('--glow-y', `${y}px`);
+    }
+
+    function resetGlow() {
+      const paper = document.getElementById('letter-paper');
+      paper.style.setProperty('--glow-x', `50%`);
+      paper.style.setProperty('--glow-y', `50%`);
+    }
+
+    /* ----------------------------------
+       TREASURE CHEST INTERACTIVE OPEN
+       ---------------------------------- */
+    let chestOpened = false;
+    function openTreasureChest(e) {
+      if (chestOpened) return;
+
+      const chest = document.getElementById('treasure-chest');
+      const note = document.getElementById('scroll-note');
+      const tip = document.getElementById('chest-tip');
+
+      chest.classList.add('open-chest');
+      tip.style.opacity = '0';
+      chestOpened = true;
+
+      setTimeout(() => {
+        triggerGoldBurst();
+        note.classList.add('visible');
+        setTimeout(updateTimelinePath, 300);
+      }, 400);
+    }
+
+    function triggerGoldBurst() {
+      const end = Date.now() + 1.2 * 1000;
+      const colors = ['#C9484A', '#FAF6EF', '#E8B84B'];
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0.45, y: 0.7 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 0.55, y: 0.7 },
+          colors: colors
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    /* ----------------------------------
+       SCROLL REVEAL OBSERVER
+       ---------------------------------- */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    /* ----------------------------------
+       VINYL AUDIO PLAYER CONTROLS
+       ---------------------------------- */
+    let musicPlaying = false;
+    const bgMusic = document.getElementById('bg-music');
+    const playerWidget = document.getElementById('music-player');
+    const musicLbl = document.getElementById('music-state-lbl');
+
+    function toggleMusic() {
+      if (musicPlaying) {
+        bgMusic.pause();
+        playerWidget.classList.remove('playing');
+        musicLbl.textContent = 'Paused';
+      } else {
+        bgMusic.play().then(() => {
+          playerWidget.classList.add('playing');
+          musicLbl.textContent = 'Playing';
+        }).catch(err => {
+          console.log("Autoplay blocked by browser. User action required.", err);
+          alert("Audio blocked by browser! Please click anywhere on the page first, then click the music widget.");
+        });
+      }
+      musicPlaying = !musicPlaying;
+    }
+
+    /* ----------------------------------
+       EASTER EGG HANDLERS
+       ---------------------------------- */
+    function openEggOverlay() {
+      document.getElementById('egg-overlay').classList.add('active');
+    }
+
+    function closeEggOverlay() {
+      document.getElementById('egg-overlay').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
