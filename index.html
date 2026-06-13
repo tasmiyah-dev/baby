@@ -2105,7 +2105,7 @@
           entry.target.classList.add('visible');
         }
       });
-    /* Music controls removed */
+    });
 
     /* ----------------------------------
        EASTER EGG HANDLERS
@@ -2118,8 +2118,9 @@
       document.getElementById('egg-overlay').classList.remove('active');
     }
   </script>
-<audio id="bg-music" src="Sahiba - Aditya Rikhari (320kbps) [apnamusic.com].mp3" loop autoplay preload="auto"></audio>
+<audio id="bg-music" src="assets/song.mp3" loop preload="auto"></audio>
 <script>
+  const bgMusic = document.getElementById('bg-music');
   document.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       bgMusic.play().catch(err => console.log('Autoplay blocked', err));
