@@ -2105,32 +2105,7 @@
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
-
-    /* ----------------------------------
-       VINYL AUDIO PLAYER CONTROLS
-       ---------------------------------- */
-    let musicPlaying = false;
-    const bgMusic = document.getElementById('bg-music');
-    const playerWidget = document.getElementById('music-player');
-    const musicLbl = document.getElementById('music-state-lbl');
-
-    function toggleMusic() {
-      if (musicPlaying) {
-        bgMusic.pause();
-        playerWidget.classList.remove('playing');
-        musicLbl.textContent = 'Paused';
-      } else {
-        bgMusic.play().then(() => {
-          playerWidget.classList.add('playing');
-          musicLbl.textContent = 'Playing';
-        }).catch(err => {
-          console.log("Autoplay blocked by browser. User action required.", err);
-          alert("Audio blocked by browser! Please click anywhere on the page first, then click the music widget.");
-        });
-      }
-      musicPlaying = !musicPlaying;
-    }
+    /* Music controls removed */
 
     /* ----------------------------------
        EASTER EGG HANDLERS
@@ -2143,7 +2118,7 @@
       document.getElementById('egg-overlay').classList.remove('active');
     }
   </script>
-<audio id="bg-music" src="Sahiba - Aditya Rikhari (320kbps) [apnamusic.com].mp3" loop></audio>
+<audio id="bg-music" src="Sahiba - Aditya Rikhari (320kbps) [apnamusic.com].mp3" loop autoplay preload="auto"></audio>
 <script>
   document.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
